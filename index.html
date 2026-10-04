@@ -1,0 +1,2299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0,
+      maximum-scale=1.0, user-scalable=no">
+
+<title>Forhad Hossen Shanto — A Memory</title>
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html{
+    scroll-behavior:smooth;
+    background:#020202;
+}
+
+body{
+    background:#020202;
+    color:#f4f1ea;
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+    overflow-x:hidden;
+}
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root{
+    --bg:#020202;
+    --white:#f5f3ee;
+    --soft:#aaa69d;
+    --gold:#d9bd78;
+    --line:rgba(255,255,255,.13);
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+#intro{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(217,189,120,.06),
+            transparent 35%
+        ),
+        #020202;
+
+    transition:
+        opacity 2s ease,
+        visibility 2s ease;
+}
+
+#intro.hide{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+}
+
+.intro-content{
+    width:92%;
+    max-width:850px;
+    text-align:center;
+    position:relative;
+}
+
+.intro-text{
+    position:absolute;
+    width:100%;
+
+    left:0;
+    top:50%;
+    transform:
+        translateY(-50%)
+        translateY(25px);
+
+    opacity:0;
+    filter:blur(12px);
+
+    font-family:Georgia,serif;
+    font-size:
+        clamp(17px,4.5vw,29px);
+
+    line-height:1.7;
+    letter-spacing:.04em;
+
+    color:#ddd9d0;
+
+    transition:
+        opacity 1.7s ease,
+        transform 1.7s ease,
+        filter 1.7s ease;
+}
+
+.intro-text.show{
+    opacity:1;
+    filter:blur(0);
+    transform:
+        translateY(-50%)
+        translateY(0);
+}
+
+.name-reveal{
+    position:absolute;
+    width:100%;
+
+    left:0;
+    top:50%;
+
+    transform:
+        translateY(-50%)
+        scale(.82);
+
+    opacity:0;
+    filter:blur(25px);
+
+    transition:
+        opacity 2.4s ease,
+        transform 2.4s cubic-bezier(.2,.8,.2,1),
+        filter 2.4s ease;
+}
+
+.name-reveal.show{
+    opacity:1;
+    filter:blur(0);
+    transform:
+        translateY(-50%)
+        scale(1);
+}
+
+.name{
+    font-family:Georgia,serif;
+
+    font-size:
+        clamp(37px,10vw,92px);
+
+    font-weight:400;
+
+    letter-spacing:
+        clamp(.04em,.8vw,.12em);
+
+    text-transform:uppercase;
+
+    background:
+        linear-gradient(
+            110deg,
+            #ffffff,
+            #d9bd78,
+            #ffffff,
+            #a58c55
+        );
+
+    background-size:300% auto;
+
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+
+    animation:
+        goldMove 7s linear infinite;
+}
+
+@keyframes goldMove{
+    to{
+        background-position:300% center;
+    }
+}
+
+.birthday{
+    margin-top:18px;
+
+    color:var(--gold);
+
+    font-size:11px;
+    letter-spacing:.45em;
+    text-transform:uppercase;
+}
+
+
+/* =========================================================
+   ENTER SCREEN
+========================================================= */
+
+#enterScreen{
+    position:fixed;
+    inset:0;
+    z-index:9998;
+
+    display:none;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    background:#020202;
+
+    opacity:0;
+    transition:opacity 1s ease;
+}
+
+#enterScreen.show{
+    display:flex;
+    opacity:1;
+}
+
+.enter-content{
+    width:90%;
+}
+
+.enter-small{
+    color:#777;
+
+    font-size:10px;
+    letter-spacing:.35em;
+    text-transform:uppercase;
+
+    margin-bottom:28px;
+}
+
+.enter-button{
+    position:relative;
+
+    padding:16px 34px;
+
+    border-radius:100px;
+
+    border:
+        1px solid
+        rgba(217,189,120,.5);
+
+    background:
+        rgba(217,189,120,.035);
+
+    color:#eee;
+
+    font-size:10px;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+
+    cursor:pointer;
+
+    overflow:hidden;
+
+    transition:.4s ease;
+}
+
+.enter-button:active{
+    transform:scale(.94);
+}
+
+
+/* =========================================================
+   PARTICLES
+========================================================= */
+
+#particles{
+    position:fixed;
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:2;
+}
+
+.particle{
+    position:absolute;
+
+    width:2px;
+    height:2px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.7);
+
+    box-shadow:
+        0 0 8px rgba(255,255,255,.5);
+
+    animation:
+        particleFloat linear infinite;
+}
+
+@keyframes particleFloat{
+
+    from{
+        transform:
+            translate3d(0,110vh,0);
+        opacity:0;
+    }
+
+    15%{
+        opacity:.7;
+    }
+
+    80%{
+        opacity:.35;
+    }
+
+    to{
+        transform:
+            translate3d(35px,-10vh,0);
+        opacity:0;
+    }
+}
+
+
+/* =========================================================
+   MUSIC BUTTON
+========================================================= */
+
+#music{
+    position:fixed;
+
+    right:17px;
+    top:17px;
+
+    z-index:5000;
+
+    width:45px;
+    height:45px;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        rgba(255,255,255,.17);
+
+    background:
+        rgba(0,0,0,.45);
+
+    backdrop-filter:blur(12px);
+
+    color:#ddd;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    cursor:pointer;
+
+    opacity:0;
+    pointer-events:none;
+
+    transition:.5s ease;
+}
+
+#music.show{
+    opacity:1;
+    pointer-events:auto;
+}
+
+#music.playing{
+    box-shadow:
+        0 0 0 1px
+        rgba(217,189,120,.18),
+        0 0 25px
+        rgba(217,189,120,.15);
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+main{
+    position:relative;
+    z-index:3;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    min-height:100svh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    position:relative;
+
+    padding:30px;
+}
+
+.hero::before{
+    content:"";
+
+    position:absolute;
+
+    width:90vw;
+    height:90vw;
+
+    max-width:800px;
+    max-height:800px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(217,189,120,.07),
+            transparent 68%
+        );
+
+    filter:blur(15px);
+}
+
+.hero-content{
+    position:relative;
+    z-index:5;
+}
+
+.hero-label{
+    color:var(--gold);
+
+    font-size:10px;
+    letter-spacing:.42em;
+
+    text-transform:uppercase;
+
+    margin-bottom:25px;
+}
+
+.hero-name{
+    font-family:Georgia,serif;
+
+    font-size:
+        clamp(45px,13vw,120px);
+
+    font-weight:400;
+
+    line-height:.95;
+
+    background:
+        linear-gradient(
+            110deg,
+            white,
+            #d9bd78,
+            white
+        );
+
+    background-size:200% auto;
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    color:transparent;
+
+    animation:
+        goldMove 7s linear infinite;
+}
+
+.hero-sub{
+    margin-top:25px;
+
+    color:#999;
+
+    font-size:12px;
+
+    letter-spacing:.25em;
+
+    text-transform:uppercase;
+}
+
+
+/* =========================================================
+   COMMON SECTIONS
+========================================================= */
+
+.section{
+    min-height:100svh;
+
+    padding:
+        110px 7vw;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+}
+
+.label{
+    color:var(--gold);
+
+    font-size:10px;
+
+    letter-spacing:.4em;
+
+    text-transform:uppercase;
+
+    margin-bottom:20px;
+}
+
+.title{
+    font-family:Georgia,serif;
+
+    font-size:
+        clamp(37px,9vw,72px);
+
+    line-height:1.05;
+
+    font-weight:400;
+
+    margin-bottom:25px;
+}
+
+.description{
+    max-width:650px;
+
+    color:#929089;
+
+    line-height:1.9;
+
+    font-size:14px;
+}
+
+
+/* =========================================================
+   PHOTO SECTION
+========================================================= */
+
+.photos{
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(255,255,255,.025),
+            transparent 60%
+        );
+}
+
+.photo-list{
+    margin-top:55px;
+
+    display:flex;
+    flex-direction:column;
+
+    gap:100px;
+}
+
+.memory{
+    width:100%;
+    max-width:700px;
+
+    margin:auto;
+
+    opacity:0;
+
+    transform:
+        translateY(70px)
+        scale(.96);
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.3s cubic-bezier(.2,.8,.2,1);
+}
+
+.memory.visible{
+    opacity:1;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+.photo{
+    position:relative;
+
+    overflow:hidden;
+
+    background:#090909;
+
+    border:
+        1px solid
+        rgba(255,255,255,.13);
+
+    box-shadow:
+        0 35px 90px
+        rgba(0,0,0,.65);
+
+    transform-style:preserve-3d;
+}
+
+.photo::after{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            120deg,
+            transparent 25%,
+            rgba(255,255,255,.08),
+            transparent 55%
+        );
+
+    transform:translateX(-130%);
+
+    transition:1.4s ease;
+
+    pointer-events:none;
+}
+
+.memory.visible .photo::after{
+    transform:translateX(130%);
+}
+
+.photo img{
+    display:block;
+
+    width:100%;
+    height:auto;
+
+    object-fit:contain;
+
+    transform:scale(1.01);
+
+    transition:
+        transform 6s ease;
+}
+
+.memory.visible img{
+    transform:scale(1.07);
+}
+
+.number{
+    position:absolute;
+
+    top:14px;
+    left:14px;
+
+    z-index:4;
+
+    padding:7px 11px;
+
+    background:
+        rgba(0,0,0,.5);
+
+    backdrop-filter:blur(10px);
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    font-size:9px;
+
+    letter-spacing:.2em;
+}
+
+.caption{
+    padding:
+        18px 4px 0;
+
+    color:#858179;
+
+    font-family:Georgia,serif;
+
+    font-size:14px;
+
+    line-height:1.7;
+}
+
+
+/* =========================================================
+   TIMELINE
+========================================================= */
+
+.timeline{
+    position:relative;
+
+    max-width:800px;
+
+    width:100%;
+
+    margin:50px auto 0;
+}
+
+.timeline::before{
+    content:"";
+
+    position:absolute;
+
+    left:15px;
+    top:0;
+    bottom:0;
+
+    width:1px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            rgba(217,189,120,.55),
+            transparent
+        );
+}
+
+.timeline-item{
+    position:relative;
+
+    padding-left:55px;
+
+    min-height:165px;
+
+    opacity:0;
+
+    transform:translateX(-35px);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+.timeline-item.visible{
+    opacity:1;
+    transform:translateX(0);
+}
+
+.dot{
+    position:absolute;
+
+    left:8px;
+    top:4px;
+
+    width:15px;
+    height:15px;
+
+    border-radius:50%;
+
+    background:#020202;
+
+    border:
+        1px solid
+        var(--gold);
+
+    box-shadow:
+        0 0 0 6px
+        rgba(217,189,120,.04),
+        0 0 25px
+        rgba(217,189,120,.2);
+}
+
+.t-number{
+    color:var(--gold);
+
+    font-size:9px;
+
+    letter-spacing:.3em;
+}
+
+.timeline h3{
+    margin-top:9px;
+
+    font-family:Georgia,serif;
+
+    font-size:28px;
+
+    font-weight:400;
+}
+
+.timeline p{
+    margin-top:10px;
+
+    color:#777;
+
+    font-size:13px;
+
+    line-height:1.8;
+
+    max-width:500px;
+}
+
+
+/* =========================================================
+   LETTER
+========================================================= */
+
+.letter{
+    align-items:center;
+    text-align:center;
+}
+
+.letter-box{
+    width:100%;
+
+    max-width:800px;
+
+    padding:
+        45px 24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.015)
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.11);
+
+    backdrop-filter:blur(16px);
+
+    box-shadow:
+        0 40px 100px
+        rgba(0,0,0,.4);
+}
+
+.letter-title{
+    font-family:Georgia,serif;
+
+    font-size:
+        clamp(31px,8vw,55px);
+
+    font-weight:400;
+
+    margin-bottom:35px;
+}
+
+#message{
+    min-height:350px;
+
+    text-align:left;
+
+    color:#aaa69e;
+
+    font-family:Georgia,serif;
+
+    font-size:
+        clamp(15px,4.2vw,20px);
+
+    line-height:2;
+}
+
+.cursor{
+    display:inline-block;
+
+    width:1px;
+    height:20px;
+
+    background:var(--gold);
+
+    animation:blink .8s infinite;
+}
+
+@keyframes blink{
+    50%{
+        opacity:0;
+    }
+}
+
+
+/* =========================================================
+   FINAL
+========================================================= */
+
+.final{
+    min-height:100svh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.final::before{
+    content:"";
+
+    position:absolute;
+
+    width:100vw;
+    height:100vw;
+
+    max-width:900px;
+    max-height:900px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(217,189,120,.065),
+            transparent 65%
+        );
+}
+
+.final-content{
+    width:92%;
+
+    position:relative;
+
+    z-index:4;
+}
+
+.final-line{
+    opacity:0;
+
+    transform:translateY(25px);
+
+    transition:
+        opacity 1.8s ease,
+        transform 1.8s ease;
+
+    font-family:Georgia,serif;
+
+    font-size:
+        clamp(20px,5vw,34px);
+
+    line-height:1.7;
+
+    color:#aaa69e;
+}
+
+.final-line.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.final-name{
+    margin-top:45px;
+
+    opacity:0;
+
+    transform:scale(.88);
+
+    transition:
+        opacity 2s ease,
+        transform 2s ease;
+
+    font-family:Georgia,serif;
+
+    font-size:
+        clamp(35px,9vw,76px);
+
+    font-weight:400;
+
+    background:
+        linear-gradient(
+            110deg,
+            #fff,
+            var(--gold),
+            #fff
+        );
+
+    background-size:200% auto;
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    color:transparent;
+
+    animation:
+        goldMove 6s linear infinite;
+}
+
+.final-name.visible{
+    opacity:1;
+    transform:scale(1);
+}
+
+.final-message{
+    margin-top:25px;
+
+    color:#777;
+
+    font-size:13px;
+
+    line-height:1.9;
+
+    opacity:0;
+
+    transition:opacity 2s ease;
+}
+
+.final-message.visible{
+    opacity:1;
+}
+
+.signature{
+    margin-top:45px;
+
+    color:#555;
+
+    font-size:9px;
+
+    letter-spacing:.35em;
+
+    text-transform:uppercase;
+}
+
+
+/* =========================================================
+   TOUCH EFFECT
+========================================================= */
+
+.ripple{
+    position:fixed;
+
+    z-index:99999;
+
+    pointer-events:none;
+
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        rgba(217,189,120,.75);
+
+    transform:
+        translate(-50%,-50%);
+
+    animation:
+        ripple .9s ease-out forwards;
+}
+
+@keyframes ripple{
+
+    to{
+        width:110px;
+        height:110px;
+        opacity:0;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:600px){
+
+    .section{
+        padding:
+            95px 6vw;
+    }
+
+    .photo-list{
+        gap:80px;
+    }
+
+    .letter-box{
+        padding:35px 20px;
+    }
+
+    #message{
+        line-height:1.85;
+        min-height:390px;
+    }
+
+    .timeline-item{
+        min-height:150px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     MUSIC
+===================================================== -->
+
+<audio
+    id="audio"
+    src="Friends.mp3"
+    loop
+    preload="auto"
+    playsinline>
+</audio>
+
+
+<!-- =====================================================
+     INTRO
+===================================================== -->
+
+<div id="intro">
+
+    <div class="intro-content">
+
+        <div
+            class="intro-text"
+            id="line1">
+
+            Some memories never grow old...
+
+        </div>
+
+
+        <div
+            class="intro-text"
+            id="line2">
+
+            Some friendships only become
+            more beautiful with time.
+
+        </div>
+
+
+        <div
+            class="intro-text"
+            id="line3">
+
+            Today is not just another day...
+
+        </div>
+
+
+        <div
+            class="name-reveal"
+            id="nameReveal">
+
+            <div class="name">
+
+                FORHAD HOSSEN SHANTO
+
+            </div>
+
+            <div class="birthday">
+
+                Happy Birthday ✨
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     AUDIO FALLBACK
+===================================================== -->
+
+<div id="enterScreen">
+
+    <div class="enter-content">
+
+        <div class="enter-small">
+
+            A little memory awaits you
+
+        </div>
+
+        <button
+            class="enter-button"
+            id="enter">
+
+            Tap to Enter
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     PARTICLES
+===================================================== -->
+
+<div id="particles"></div>
+
+
+<!-- =====================================================
+     MUSIC CONTROL
+===================================================== -->
+
+<button id="music">
+    ♫
+</button>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-label">
+
+            A memory made just for you
+
+        </div>
+
+        <div class="hero-name">
+
+            FORHAD HOSSEN SHANTO
+
+        </div>
+
+        <div class="hero-sub">
+
+            Happy Birthday ✨
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MEMORIES
+===================================================== -->
+
+<section class="section photos">
+
+    <div class="label">
+        Chapter I
+    </div>
+
+    <h2 class="title">
+
+        Before life<br>
+        became complicated.
+
+    </h2>
+
+    <p class="description">
+
+        There was a time when the days felt longer,
+        laughter came easier, and ordinary moments
+        quietly became memories worth keeping.
+
+    </p>
+
+
+    <div class="photo-list">
+
+
+        <!-- 01 -->
+
+        <div class="memory">
+
+            <div class="photo">
+
+                <div class="number">
+                    01
+                </div>
+
+                <img
+                    src="file_00000000c6a082309931c9c5734c6c3c.png"
+                    alt="Memory 01"
+                    loading="eager">
+
+            </div>
+
+            <div class="caption">
+
+                Some memories become more precious
+                the further we travel from them.
+
+            </div>
+
+        </div>
+
+
+        <!-- 02 -->
+
+        <div class="memory">
+
+            <div class="photo">
+
+                <div class="number">
+                    02
+                </div>
+
+                <img
+                    src="IMG_20260906_211856.jpg"
+                    alt="Memory 02"
+                    loading="lazy">
+
+            </div>
+
+            <div class="caption">
+
+                We never knew these ordinary days
+                would one day feel extraordinary.
+
+            </div>
+
+        </div>
+
+
+        <!-- 03 -->
+
+        <div class="memory">
+
+            <div class="photo">
+
+                <div class="number">
+                    03
+                </div>
+
+                <img
+                    src="FB_IMG_1791135126868.jpg"
+                    alt="Memory 03"
+                    loading="lazy">
+
+            </div>
+
+            <div class="caption">
+
+                A little laughter, a little chaos,
+                and a lot of memories.
+
+            </div>
+
+        </div>
+
+
+        <!-- 04 -->
+
+        <div class="memory">
+
+            <div class="photo">
+
+                <div class="number">
+                    04
+                </div>
+
+                <img
+                    src="FB_IMG_1791135118418.jpg"
+                    alt="Memory 04"
+                    loading="lazy">
+
+            </div>
+
+            <div class="caption">
+
+                Years passed, but some moments
+                refused to fade away.
+
+            </div>
+
+        </div>
+
+
+        <!-- 05 -->
+
+        <div class="memory">
+
+            <div class="photo">
+
+                <div class="number">
+                    05
+                </div>
+
+                <img
+                    src="FB_IMG_1791135097119.jpg"
+                    alt="Memory 05"
+                    loading="lazy">
+
+            </div>
+
+            <div class="caption">
+
+                Growing older never meant
+                growing away from every memory.
+
+            </div>
+
+        </div>
+
+
+        <!-- 06 -->
+
+        <div class="memory">
+
+            <div class="photo">
+
+                <div class="number">
+                    06
+                </div>
+
+                <img
+                    src="FB_IMG_1791135085354.jpg"
+                    alt="Memory 06"
+                    loading="lazy">
+
+            </div>
+
+            <div class="caption">
+
+                Somewhere inside these photographs
+                is a version of us that time can never change.
+
+            </div>
+
+        </div>
+
+
+        <!-- 07 -->
+
+        <div class="memory">
+
+            <div class="photo">
+
+                <div class="number">
+                    07
+                </div>
+
+                <img
+                    src="FB_IMG_1791135067776.jpg"
+                    alt="Memory 07"
+                    loading="lazy">
+
+            </div>
+
+            <div class="caption">
+
+                And this is where another chapter
+                of our story begins.
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     TIMELINE
+===================================================== -->
+
+<section class="section">
+
+    <div class="label">
+        Chapter II
+    </div>
+
+    <h2 class="title">
+
+        A friendship<br>
+        through time.
+
+    </h2>
+
+
+    <div class="timeline">
+
+
+        <div class="timeline-item">
+
+            <div class="dot"></div>
+
+            <div class="t-number">
+                01
+            </div>
+
+            <h3>
+                Childhood
+            </h3>
+
+            <p>
+                When friendship was simply about
+                being together and making ordinary
+                days unforgettable.
+            </p>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="dot"></div>
+
+            <div class="t-number">
+                02
+            </div>
+
+            <h3>
+                Growing Up
+            </h3>
+
+            <p>
+                We changed, learned, stumbled,
+                laughed and slowly became
+                the people we are today.
+            </p>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="dot"></div>
+
+            <div class="t-number">
+                03
+            </div>
+
+            <h3>
+                Countless Memories
+            </h3>
+
+            <p>
+                Random conversations, stupid jokes,
+                unforgettable days and moments
+                we never planned.
+            </p>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="dot"></div>
+
+            <div class="t-number">
+                04
+            </div>
+
+            <h3>
+                Still Here
+            </h3>
+
+            <p>
+                Life changed around us,
+                but somehow the friendship remained.
+            </p>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="dot"></div>
+
+            <div class="t-number">
+                05
+            </div>
+
+            <h3>
+                Another Chapter Begins...
+            </h3>
+
+            <p>
+                There are still countless pages
+                left in this story.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     LETTER
+===================================================== -->
+
+<section class="section letter">
+
+    <div class="label">
+        Chapter III
+    </div>
+
+
+    <div class="letter-box">
+
+        <h2 class="letter-title">
+
+            If I could go back...
+
+        </h2>
+
+
+        <div id="message"></div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FINAL
+===================================================== -->
+
+<section class="final">
+
+    <div class="final-content">
+
+
+        <div
+            class="final-line"
+            id="final1">
+
+            One day, we'll look back at all of this...
+
+        </div>
+
+
+        <div
+            class="final-line"
+            id="final2"
+            style="margin-top:20px;">
+
+            ...and realize how beautiful
+            these years really were.
+
+        </div>
+
+
+        <div
+            class="final-name"
+            id="finalName">
+
+            Happy Birthday,
+            Forhad Hossen Shanto ❤️
+
+        </div>
+
+
+        <div
+            class="final-message"
+            id="finalMessage">
+
+            Thank you for being one of the most
+            beautiful chapters of my childhood.
+
+        </div>
+
+
+        <div class="signature">
+
+            Made with memories ✨
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<script>
+
+/* =========================================================
+   MUSIC
+========================================================= */
+
+const audio =
+    document.getElementById("audio");
+
+const musicButton =
+    document.getElementById("music");
+
+const enterScreen =
+    document.getElementById("enterScreen");
+
+const enter =
+    document.getElementById("enter");
+
+let playing = false;
+
+
+/* Try music as early as possible */
+
+window.addEventListener("load",()=>{
+
+    setTimeout(()=>{
+
+        audio.volume = 0;
+
+        const promise =
+            audio.play();
+
+        if(promise){
+
+            promise.then(()=>{
+
+                playing = true;
+
+                musicButton.classList.add("show");
+                musicButton.classList.add("playing");
+
+                fadeMusic();
+
+            }).catch(()=>{
+
+                /* Android Chrome may block autoplay */
+
+                setTimeout(()=>{
+
+                    enterScreen.classList.add("show");
+
+                },700);
+
+            });
+
+        }
+
+    },300);
+
+});
+
+
+/* Fade music in */
+
+function fadeMusic(){
+
+    let volume = 0;
+
+    const fade =
+        setInterval(()=>{
+
+            volume += .025;
+
+            if(volume >= .55){
+
+                volume = .55;
+
+                clearInterval(fade);
+
+            }
+
+            audio.volume = volume;
+
+        },100);
+
+}
+
+
+/* Tap to enter */
+
+enter.addEventListener("click",async()=>{
+
+    try{
+
+        await audio.play();
+
+        audio.volume = .55;
+
+        playing = true;
+
+        musicButton.classList.add("show");
+        musicButton.classList.add("playing");
+
+        enterScreen.style.opacity = "0";
+
+        setTimeout(()=>{
+
+            enterScreen.style.display = "none";
+
+        },1000);
+
+    }catch(e){
+
+        console.log(e);
+
+    }
+
+});
+
+
+/* Music control */
+
+musicButton.addEventListener("click",async()=>{
+
+    if(audio.paused){
+
+        await audio.play();
+
+        musicButton.classList.add("playing");
+
+    }else{
+
+        audio.pause();
+
+        musicButton.classList.remove("playing");
+
+    }
+
+});
+
+
+/* =========================================================
+   PARTICLES
+========================================================= */
+
+const particleBox =
+    document.getElementById("particles");
+
+const particleCount =
+    window.innerWidth < 600 ? 70 : 120;
+
+for(let i=0;i<particleCount;i++){
+
+    const p =
+        document.createElement("span");
+
+    p.className = "particle";
+
+    p.style.left =
+        Math.random()*100 + "%";
+
+    p.style.animationDuration =
+        8 + Math.random()*18 + "s";
+
+    p.style.animationDelay =
+        -Math.random()*20 + "s";
+
+    const size =
+        Math.random()>.85 ? 3 : 1.5;
+
+    p.style.width =
+        size+"px";
+
+    p.style.height =
+        size+"px";
+
+    p.style.opacity =
+        .15 + Math.random()*.65;
+
+    particleBox.appendChild(p);
+
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+const intro =
+    document.getElementById("intro");
+
+const line1 =
+    document.getElementById("line1");
+
+const line2 =
+    document.getElementById("line2");
+
+const line3 =
+    document.getElementById("line3");
+
+const nameReveal =
+    document.getElementById("nameReveal");
+
+
+function show(element,time){
+
+    setTimeout(()=>{
+
+        element.classList.add("show");
+
+    },time);
+
+}
+
+
+/* First sentence */
+
+show(line1,1200);
+
+setTimeout(()=>{
+
+    line1.classList.remove("show");
+
+},4300);
+
+
+/* Second sentence */
+
+show(line2,4500);
+
+setTimeout(()=>{
+
+    line2.classList.remove("show");
+
+},8000);
+
+
+/* Third sentence */
+
+show(line3,8200);
+
+setTimeout(()=>{
+
+    line3.classList.remove("show");
+
+},11100);
+
+
+/* Name */
+
+show(nameReveal,11300);
+
+
+/* Finish intro */
+
+setTimeout(()=>{
+
+    intro.classList.add("hide");
+
+    musicButton.classList.add("show");
+
+},15700);
+
+
+/* =========================================================
+   SCROLL REVEALS
+========================================================= */
+
+const revealObserver =
+    new IntersectionObserver(
+        entries=>{
+
+            entries.forEach(entry=>{
+
+                if(entry.isIntersecting){
+
+                    entry.target.classList.add("visible");
+
+                }
+
+            });
+
+        },
+        {
+            threshold:.18
+        }
+    );
+
+
+document
+    .querySelectorAll(
+        ".memory,.timeline-item"
+    )
+    .forEach(el=>{
+
+        revealObserver.observe(el);
+
+    });
+
+
+/* =========================================================
+   TYPEWRITER MESSAGE
+========================================================= */
+
+const message =
+`Years may change us, places may change,
+and life may take us in different directions.
+
+But some memories remain untouched.
+
+I still remember the simple days,
+the endless laughter, the random conversations,
+and all those little moments that somehow
+became some of the biggest memories of childhood.
+
+We grew up.
+
+Life became busier.
+Things became different.
+And maybe we are not the same kids anymore.
+
+But there is something beautiful about knowing
+that somewhere in our story, there is a chapter
+that will always belong to us.
+
+Through the easy days and the difficult ones,
+through laughter and silence,
+I am grateful that our friendship became
+part of my childhood.
+
+Today, I just hope life gives you
+more reasons to smile,
+more moments worth remembering,
+and more beautiful chapters ahead.
+
+Happy Birthday.
+
+Keep being you.
+And never forget how many good memories
+already exist behind you.`;
+
+
+const messageBox =
+    document.getElementById("message");
+
+let started = false;
+
+
+const messageObserver =
+    new IntersectionObserver(
+        entries=>{
+
+            entries.forEach(entry=>{
+
+                if(
+                    entry.isIntersecting &&
+                    !started
+                ){
+
+                    started = true;
+
+                    typeMessage();
+
+                }
+
+            });
+
+        },
+        {
+            threshold:.3
+        }
+    );
+
+
+messageObserver.observe(
+    document.querySelector(".letter-box")
+);
+
+
+function typeMessage(){
+
+    let i = 0;
+
+    const speed = 24;
+
+
+    function write(){
+
+        if(i < message.length){
+
+            const char =
+                message.charAt(i);
+
+            if(char === "\n"){
+
+                messageBox.innerHTML +=
+                    "<br>";
+
+            }else{
+
+                messageBox.innerHTML +=
+                    char;
+
+            }
+
+            i++;
+
+            setTimeout(
+                write,
+                speed
+            );
+
+        }else{
+
+            messageBox.innerHTML +=
+                '<span class="cursor"></span>';
+
+        }
+
+    }
+
+    write();
+
+}
+
+
+/* =========================================================
+   FINAL ANIMATION
+========================================================= */
+
+const final =
+    document.querySelector(".final");
+
+const final1 =
+    document.getElementById("final1");
+
+const final2 =
+    document.getElementById("final2");
+
+const finalName =
+    document.getElementById("finalName");
+
+const finalMessage =
+    document.getElementById("finalMessage");
+
+
+let finalPlayed = false;
+
+
+const finalObserver =
+    new IntersectionObserver(
+        entries=>{
+
+            entries.forEach(entry=>{
+
+                if(
+                    entry.isIntersecting &&
+                    !finalPlayed
+                ){
+
+                    finalPlayed = true;
+
+
+                    setTimeout(()=>{
+
+                        final1
+                            .classList
+                            .add("visible");
+
+                    },400);
+
+
+                    setTimeout(()=>{
+
+                        final2
+                            .classList
+                            .add("visible");
+
+                    },2400);
+
+
+                    setTimeout(()=>{
+
+                        finalName
+                            .classList
+                            .add("visible");
+
+                    },4500);
+
+
+                    setTimeout(()=>{
+
+                        finalMessage
+                            .classList
+                            .add("visible");
+
+                    },6500);
+
+                }
+
+            });
+
+        },
+        {
+            threshold:.35
+        }
+    );
+
+
+finalObserver.observe(final);
+
+
+/* =========================================================
+   TOUCH RIPPLE
+========================================================= */
+
+document.addEventListener(
+    "touchstart",
+    event=>{
+
+        const touch =
+            event.touches[0];
+
+        if(!touch) return;
+
+
+        const ripple =
+            document.createElement("div");
+
+        ripple.className =
+            "ripple";
+
+        ripple.style.left =
+            touch.clientX + "px";
+
+        ripple.style.top =
+            touch.clientY + "px";
+
+
+        document.body.appendChild(
+            ripple
+        );
+
+
+        setTimeout(()=>{
+
+            ripple.remove();
+
+        },900);
+
+    },
+    {
+        passive:true
+    }
+);
+
+
+/* =========================================================
+   DESKTOP 3D PHOTO EFFECT
+========================================================= */
+
+if(
+    window.matchMedia(
+        "(pointer:fine)"
+    ).matches
+){
+
+    document.addEventListener(
+        "mousemove",
+        event=>{
+
+            const x =
+                (event.clientX /
+                window.innerWidth - .5) * 2;
+
+            const y =
+                (event.clientY /
+                window.innerHeight - .5) * 2;
+
+
+            document
+                .querySelectorAll(".photo")
+                .forEach((photo,index)=>{
+
+                    const amount =
+                        1.5 + (index % 3);
+
+                    photo.style.transform =
+                        `perspective(900px)
+                         rotateY(${x*amount}deg)
+                         rotateX(${-y*amount}deg)`;
+
+                });
+
+        }
+    );
+
+}
+
+</script>
+
+</body>
+  </html>
